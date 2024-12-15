@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv/config');
@@ -8,8 +7,10 @@ require('dotenv/config');
 app.use(cors());
 app.options('*', cors());
 
-//middlewares
-app.use(bodyParser.json());
+// Built-in body parsing middleware
+app.use(express.json()); // For JSON data
+app.use(express.urlencoded({ extended: true })); // For form-encoded data
+
 
 //Routes
 const categoryRoute = require('./routes/category');

@@ -4,14 +4,15 @@ const productSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        trim: true,
-        maxlength: 100
     },
     description: {
         type: String,
         required: true,
-        trim: true,
-        //maxlength: 1000,
+    },
+    brand: {
+        type: String,
+        default: 'Generic'
+        
     },
     price: {
         type: Number,
@@ -23,10 +24,12 @@ const productSchema = new mongoose.Schema({
         ref: 'Category',
         required: true,
     },
-    image: [{
-        type: String,
-        required: true,
-        }],   
+    images: [
+        {
+            type: String,
+            required: true,
+        }
+    ],   
     stock: {
         type: Number,
         required: true,
@@ -49,4 +52,4 @@ const productSchema = new mongoose.Schema({
     },
 });
 
-exports.Product = mongoose.model('Products', productSchema);
+exports.Products = mongoose.model('Products', productSchema);
